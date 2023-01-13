@@ -1,15 +1,15 @@
 <h3 class="font-blod text-xl mb-4 ">Friends</h3>
 <ul>
-    @foreach (range(1,6) as $index )
+    @foreach (auth()->user()->follows as $user )
 
     <li class="mb-4">
         <div class="flex items-center text-sm">
             <img
-            src="https://i.pravatar.cc/40"
+            src={{$user->avatar}}
             alt=""
             class="rounded-full mr-2"
             >
-            Koolfzt
+            {{$user->name }}
         </div>
 
     </li>

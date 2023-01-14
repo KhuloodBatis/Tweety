@@ -1,5 +1,5 @@
-<div class="border border-blue-400 rounded-lg px-8 py-6 mb-8 ">
-    <form method="POSt" action="/tweets">
+<div class="border border-blue-400 rounded-2xl px-8 py-6 mb-8 ">
+    <form method="POST" action="/tweets">
         @csrf
         <textarea
         name="body"
@@ -11,8 +11,10 @@
             src="{{auth()->user()->avatar}}"
             alt=""
             class="rounded-full mr-2"
+            width="50"
+            height="50"
             >
-            <button type="submit" class="bg-blue-500 rounded-lg shadow py-2 px-2 text-white">
+            <button type="submit" class="bg-blue-500 rounded-2xl shadow py-2 px-2 text-white">
                 Tweet-a-root!
             </button>
         </footer>

@@ -7,6 +7,16 @@ use Illuminate\Http\Request;
 
 class TweetController extends Controller
 {
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function index()
+    {
+        return view('tweets.index', ['tweets' => auth()->user()->timeline()]);
+    }
     public function store()
     {
         $attributes = request()
@@ -16,6 +26,6 @@ class TweetController extends Controller
             'body' =>  $attributes['body'],
         ]);
 
-        return redirect('/home');
+        return redirect('/tweets');
     }
 }

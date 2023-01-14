@@ -1,5 +1,12 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
+//to know what the sql query
+// DB::listen(function ($query) {
+//     var_dump($query->sql, $query->bindings);
+// });
+
+use App\Http\Controllers\ProfilesController;
 use App\Http\Controllers\TweetController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,8 +25,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+Route::middleware('auth')->group(function () {
+    Route::get('/tweets', [TweetController::class, 'index'])->name('home');
+    Route::post('/tweets', [TweetController::class, 'store']);
+});
+
 Auth::routes();
+Route::get('/profiles/{user}', [ProfilesController::class, 'show'])->name('profile');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::post('/tweets', [TweetController::class, 'store']);

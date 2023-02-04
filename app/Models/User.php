@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Trait\followable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -12,7 +14,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, followable;
 
     /**
      * The attributes that are mass assignable.
@@ -20,6 +22,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'username',
         'name',
         'email',
         'password',
@@ -73,28 +76,20 @@ class User extends Authenticatable
      */
     public function tweets(): HasMany
     {
-        return $this->hasMany(Tweet::class);
-    }
-
-
-    public function follow(User $user)
-    {
-        return $this->follows()->save($user);
-    }
-    /**
-     * Get the follows that owns the User
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function follows(): BelongsToMany
-    {
-        return $this->belongsToMany(User::class, 'follows', 'user_id', 'following_user_id');
+        return $this->hasMany(Tweet::class)->latest();
     }
 
     //in laravel 6
 
-    public function getRouteKeyName()
+    // public function getRouteKeyName()
+    // {
+    //     return 'name';
+    // }
+    //go to route/web
+
+    public function path($append = '')
     {
-        return 'name';
+        $path = route('profile', $this->username);
+        return $append ? "{$path}/{$append}" : $path;
     }
 }

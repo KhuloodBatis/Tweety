@@ -5,11 +5,13 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use App\Trait\followable;
+use Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Storage;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -21,17 +23,17 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    // protected $fillable = [
-    //     'username',
-    //     'name',
-    //     'email',
-    //     'password',
-    //     'avatar'
-    // ];
+    protected $fillable = [
+        'username',
+        'name',
+        'email',
+        'password',
+        'avatar'
+    ];
 
     //?or use
     //without selecte property
-    protected $guarded = [];
+    // protected $guarded = [];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -54,21 +56,12 @@ class User extends Authenticatable
 
     public function getAvatarAttribute($value)
     {
-        return "https://i.pravatar.cc/200?u=" . $this->email;
-
+        return asset('storage/' . $value);
     }
 
 
     public function timeline()
     {
-        // return Tweet::where('user_id', $this->id)->latest()->get();
-        //include all of the user's tweets
-        //as well as the tweets of everyone
-        //the follow..in descending order by date
-        // $ids = $this->follows->pluck('id');
-        // $ids->push($this->id);
-        // return  Tweet::whereIn('user_id', $ids)->latest()->get();
-
         $friends = $this->follows()->pluck('id');
 
         return  Tweet::whereIn('user_id', $friends)

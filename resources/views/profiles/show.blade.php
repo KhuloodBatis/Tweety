@@ -5,8 +5,8 @@
                 <img src="/images/mylook.jpg"  alt="" class=" rounded-xl mb-2">
                 <img
                 src="{{$user->avatar}}"
-                alt=""
-                class="rounded-full mr-2 absolute bottom-0 transform -translate-x-1/2 translate-y-1/2 ml-52 lg:ml-80 w-[100px] lg:w-[150px]"
+                alt="avatar"
+                class="rounded-full mr-2 absolute bottom-0 transform -translate-x-1/2 translate-y-1/2 ml-52 lg:ml-80 w-[90px] lg:w-[150px]"
                 >
 
             </div>

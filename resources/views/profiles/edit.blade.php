@@ -1,6 +1,6 @@
 <x-app>
 
-    <form action="{{$user->path()}}" method="POST" enctype="">
+    <form action="{{$user->path()}}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PATCH')
 
@@ -41,6 +41,29 @@
         <p class="text-red-500 text-xs mt-2">{{$message}}</p>
     @enderror
   </div>
+
+  <div class="mb-6">
+    <label for="avatar"
+    class="block mb-2 font-blod uppercase text-xs text-gray-700">
+    Avatar
+    </label>
+    <div class="flex">
+    <input
+    class="border border-gray-400 p-2 w-full"
+    type="file"
+    name="avatar"
+      id="avatar"
+      value={{$user->avatar}}
+      required
+      placeholder=""
+      >
+      <img src="{{$user->avatar}}" alt="yor avatar" width="40px">
+    </div>
+    @error('avatar')
+        <p class="text-red-500 text-xs mt-2">{{$message}}</p>
+    @enderror
+  </div>
+
 
   <div class="mb-6">
     <label for="email"

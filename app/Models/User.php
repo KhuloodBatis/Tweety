@@ -21,12 +21,17 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'username',
-        'name',
-        'email',
-        'password',
-    ];
+    // protected $fillable = [
+    //     'username',
+    //     'name',
+    //     'email',
+    //     'password',
+    //     'avatar'
+    // ];
+
+    //?or use
+    //without selecte property
+    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -47,10 +52,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function getAvatarAttribute()
+    public function getAvatarAttribute($value)
     {
         return "https://i.pravatar.cc/200?u=" . $this->email;
+
     }
+
+
     public function timeline()
     {
         // return Tweet::where('user_id', $this->id)->latest()->get();

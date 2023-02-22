@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ExploreController;
 use App\Http\Controllers\FollowsController;
 use Illuminate\Support\Facades\DB;
 //to know what the sql query
@@ -30,9 +31,10 @@ Route::get('/', function () {
 Route::middleware('auth')->group(function () {
     Route::get('/tweets', [TweetController::class, 'index'])->name('home');
     Route::post('/tweets', [TweetController::class, 'store']);
-    Route::post('/profiles/{user:username}/follow', [FollowsController::class, 'store']);
-    
+    Route::post('/profiles/{user:username}/follow', [FollowsController::class, 'store'])->name('follow');
+
     Route::get('/profiles/{user:username}/edit', [ProfilesController::class, 'edit']);
+
     Route::patch('/profiles/{user:username}', [ProfilesController::class, 'update']);
 
 
@@ -41,3 +43,4 @@ Route::middleware('auth')->group(function () {
 Auth::routes();
 Route::get('/profiles/{user:username}', [ProfilesController::class, 'show'])->name('profile');
 
+Route::get('/explore', [ExploreController::class, 'index'])->name('explore');

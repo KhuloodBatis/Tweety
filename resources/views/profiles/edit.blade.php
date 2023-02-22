@@ -54,7 +54,6 @@
     name="avatar"
       id="avatar"
       value={{$user->avatar}}
-      required
       placeholder=""
       >
       <img src="{{$user->avatar}}" alt="yor avatar" width="40px">

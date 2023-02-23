@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\ExploreController;
 use App\Http\Controllers\FollowsController;
 use Illuminate\Support\Facades\DB;
@@ -39,6 +40,7 @@ Route::middleware('auth')->group(function () {
 
 
 });
+Route::get('/logout', [LogoutController::class, 'perform'])->name('logout.perform');
 
 Auth::routes();
 Route::get('/profiles/{user:username}', [ProfilesController::class, 'show'])->name('profile');

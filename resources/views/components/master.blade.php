@@ -19,7 +19,7 @@
 </head>
 <body>
     <div id="app">
-        <section class="px-8 py-4">
+        <section class="px-8 py-4 mb-20">
 
             <header class="container mx-auto">
              <img src="/images/logo.svg"

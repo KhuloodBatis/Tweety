@@ -121,8 +121,9 @@
       <div class="mb-4">
           <button
           type="submit"
-          class="bg-blue-400 rounded py-2 px-4 hover:bg-blue-500">Submit</button>
+          class="bg-blue-500 rounded py-2 px-4 hover:bg-blue-300 border border-gray-500">Submit</button>
 
+          <a href="{{$user->path()}}" class="bg-blue-500 border border-gray-500 rounded py-2 px-5 hover:bg-blue-300">Cancel</a>
       </div>
     </form>
 </x-app>

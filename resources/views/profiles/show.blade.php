@@ -6,13 +6,13 @@
                 <img
                 src="{{$user->avatar}}"
                 alt="avatar"
-                class="rounded-full mr-2 absolute bottom-0 transform -translate-x-1/2 translate-y-1/2 ml-52 lg:ml-80 w-[90px] lg:w-[150px]"
+                class="rounded-full mr-2 absolute bottom-0 transform -translate-x-1/2  translate-y-1/2 ml-36  md:ml-44  lg:ml-80 w-20 md:w-[90px]  lg:w-[150px]"
                 >
 
             </div>
             <div class="flex justify-between items-center mb-6">
-                <div>
-                  <h2 class="font-bold text-2xl ">{{$user->name}}</h2>
+                <div style="max-width: 270px">
+                  <h2 class="font-bold text-sm lg:text-xl ">{{$user->name}}</h2>
                   <p class="text-sm">Joined {{$user->created_at->diffForHumans()}}</p>
                 </div>
                 <div class="flex">
@@ -33,6 +33,6 @@
         </header>
 
         @include('_timeline',[
-            'tweets'=>$user->tweets
+            'tweets' => $tweets
         ])
 </x-app>

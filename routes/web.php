@@ -45,4 +45,4 @@ Route::get('/logout', [LogoutController::class, 'perform'])->name('logout.perfor
 Auth::routes();
 Route::get('/profiles/{user:username}', [ProfilesController::class, 'show'])->name('profile');
 
-Route::get('/explore', [ExploreController::class, 'index'])->name('explore');
+Route::get('/explore', ExploreController::class)->name('explore');

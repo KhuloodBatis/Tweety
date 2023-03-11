@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 
 use App\Http\Controllers\ProfilesController;
 use App\Http\Controllers\TweetController;
+use App\Http\Controllers\TweetLikeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,10 +33,16 @@ Route::get('/', function () {
 Route::middleware('auth')->group(function () {
     Route::get('/tweets', [TweetController::class, 'index'])->name('home');
     Route::post('/tweets', [TweetController::class, 'store']);
+    //TODO::you shuold do two method 
+    // Route::post('/tweets', [TweetController::class, 'edit']);
+    // Route::post('/tweets', [TweetController::class, 'destroy']);
+
+    Route::post('/tweets/{tweet}/like', [TweetLikeController::class, 'store']);
+    Route::delete('/tweets/{tweet}/like', [TweetLikeController::class, 'destroy']);
+
+
     Route::post('/profiles/{user:username}/follow', [FollowsController::class, 'store'])->name('follow');
-
     Route::get('/profiles/{user:username}/edit', [ProfilesController::class, 'edit']);
-
     Route::patch('/profiles/{user:username}', [ProfilesController::class, 'update']);
 
 

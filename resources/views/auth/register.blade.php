@@ -1,6 +1,6 @@
 <x-master>
 <div class="container mx-auto flex justify-center">
-    <div class="px-14 py-10  bg-gray-200 border border-gray-300 rounded-3xl">
+    <div class="px-14 py-8  bg-gray-200 border border-gray-300 rounded-3xl">
 
         <div class="font-bold text-lg mb-4 ">{{ __('Register') }}</div>
 
@@ -18,7 +18,7 @@
                             <input
                             id="username"
                             type="text"
-                            class="border border-gray-400 px-16 py-2 w-full"
+                            class="border border-gray-400  p-2  w-full"
                             name="username"
                             value="{{ old('username') }}"
                             required
@@ -30,7 +30,7 @@
                                     </p>
                                 @enderror
 
-                    </div>
+                    </div >
 
                         <div class="mb-6">
                             <label
@@ -39,11 +39,11 @@
                             {{ __('Name') }}
                             </label>
 
-                            <div class="col-md-6">
+                            <div >
                                 <input
                                 id="name"
                                 type="text"
-                                class= "border border-gray-400 px-16 py-2 w-full "
+                                class= "border mb-2 border-gray-400 p-2 w-full "
                                 name="name"
                                 value="{{ old('name') }}"
                                 required
@@ -66,7 +66,7 @@
                             <input
                             id="email"
                             type="text"
-                            class="border border-gray-400 px-16 py-2 w-full"
+                            class="border border-gray-400 p-2 w-full"
                             name="email"
                             autocomplete="email"
                             value="{{ old('email') }}"
@@ -89,7 +89,7 @@
                              <input
                              id="password"
                              type="password"
-                             class= "border border-gray-400 px-16 py-2 w-full"
+                             class= "border border-gray-400 p-2 w-full"
                              name="password"
                              required
                              autocomplete="new-password">
@@ -109,7 +109,7 @@
                              <input
                              id="password-confirm"
                              type="password"
-                             class= "border border-gray-400 px-16 py-2 w-full"
+                             class= "border border-gray-400 p-2 w-full"
                              name="password_confirmation"
                              required
                              autocomplete="new-password">
